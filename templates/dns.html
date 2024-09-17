@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>geodle 🌎</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style_classic.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style_flag_capital.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/planet.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.ico') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">   
+    </script>   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">   
+    </script>  
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jquery-ui.css') }}" />
+
+
+	<meta property="og:title" content="geodle" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://geodle.onrender.net" />
+	<meta property="og:description" content="Come play some geo games on geodle :)" />
+	<meta name="theme-color" content="#FF0000">
+
+</head>
+
+<body>
+<div class="main">
+</div>
+
+<header>
+    <div class="header-content">
+        <h1 class="site-title"><a href="/" class="link"><span class="geo">geo</span><span class="dle">dle</span></a></h1> 
+        <h2 id="welcome">Welcome to Domain name mode ! Try to find today's Domain name :)</h2>       
+    </div>
+</header>
+
+<div id="content">
+    <div class="guess-container">
+        {% if not session["dns_win"]%}
+        <form action="/dns" method='POST'>
+            <input name="guess" type="text" placeholder="Enter your guess here..." class="guess-input" id="tags" autofocus >
+        </form>
+        {% endif %}
+        {% if session["dns_win"] %}
+        <div class="win-message">
+            <p>🎉 Congratulations ! You guessed the domain name correctly !  🎉</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <br>
+    <br>
+    <div class="center-capital">
+        <b>{{ today_dns[2] }}</b>
+    </div>
+    <br>
+    <br>
+
+    {% if session["dns_guesses"] and today_dns%}
+    <table id="guesses_flag">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in session["dns_guesses"] %} 
+                <tr>
+                    {% for item in object %}
+
+                            <td {% if item == today_dns[0] %} class="green-bg"
+                                {% elif item == today_dns[1] %} class="green-bg"
+                                {% elif item == '-' %} class="no-data"
+                                {% else %} class="red-bg" 
+                                {% endif %}>
+                                {% if item == '-' %}
+                                    ✖
+                                {% else %}
+                                    {{ item }}
+                                {% endif %}
+                            </td>
+                        
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+
+    
+</div>
+
+    <script> 
+    $( function() { 
+    var availableTags = [ 
+        {% for n in names %}
+            {% if session["dns_cnames"]%}
+                {% if n not in session["dns_cnames"]%}
+                    "{{n}}", 
+                {% endif %}
+            {% else %} "{{n}}",
+            {% endif %} 
+        {% endfor %} 
+    ]; 
+    $( "#tags" ).autocomplete({ 
+        source: availableTags 
+    }); 
+    } ); 
+    </script> 
+
+<footer>
+    <div class="footer-content">
+        <div class="copyright">
+            <p>all rights reserved &copy; 2024 <b><a href="https://github.com/0adri3n/geodle"  target="_blank" class="link" style="color: white;">geodle</a></b> | made with ❤ by 0adri3n | affiliated to <b><a href="https://wikidle.onrender.com/" target="_blank" class="link" style="color: white;">wikidle!</a></b></p>
+        </div>
+    </div>
+</footer>
+
+</body>
+ 
+</html>

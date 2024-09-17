@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>geodle 🌎</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style_classic.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/planet.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.ico') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">   
+    </script>   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.js">   
+    </script>  
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jquery-ui.css') }}" />
+
+	<meta property="og:title" content="geodle" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://geodle.onrender.net" />
+	<meta property="og:description" content="Come play some geo games on geodle :)" />
+	<meta name="theme-color" content="#FF0000">
+
+</head>
+
+<body>
+<div class="main">
+</div>
+
+<header>
+    <div class="header-content">
+        <h1 class="site-title"><a href="/" class="link"><span class="geo">geo</span><span class="dle">dle</span></a></h1> 
+        <h2 id="welcome">Welcome to classic mode ! Try to find today's country :)</h2>       
+    </div>
+</header>
+
+<div id="content">
+    <div class="guess-container">
+        {% if not session["win"]%}
+        <form action="/classic" method='POST'>
+            <input name="guess" type="text" placeholder="Enter your guess here..." class="guess-input" id="tags" autofocus >
+        </form>
+        {% endif %}
+        {% if session["win"] %}
+        <div class="win-message">
+            <p>🎉 Congratulations ! You guessed the country correctly !  🎉</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <br>
+    <br>
+    {%- with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<p id="flashedmessage">{{ message }}</p>
+		{% endfor %}
+	{% endif %}
+	{% endwith -%}
+    <br>
+
+    {% if session["guesses"] and classic_country%}
+    <table id="guesses">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in session["guesses"] %} 
+                <tr>
+                    {% for item in object %}
+
+                            <td {% if item == classic_country[0] %} class="green-bg"
+                                {% elif item|int == classic_country[1]|int %} class="green-bg" 
+                                {% elif item == classic_country[2] %} class="green-bg"
+                                {% elif item|int == classic_country[3]|int %} class="green-bg" 
+                                {% elif item|int == classic_country[4]|int %} class="green-bg" 
+                                {% elif item == classic_country[5] %} class="green-bg"
+                                {% elif item == '-' %} class="no-data"
+                                {% else %} class="red-bg" 
+                                {% endif %}>
+                                {% if item == '-' %}
+                                    ✖
+                                {% else %}
+                                    {{ item }}
+                                {% endif %}
+
+                                {% if loop.index0 == 1 and item != '-' %}
+                                    {% if item|int > classic_country[1]|int %}
+                                        🔽
+                                    {% elif item|int < classic_country[1]|int %}
+                                        🔼
+                                    {% endif %}
+                                {% elif loop.index0 == 3 and item != '-' %}
+                                    {% if item|int > classic_country[3]|int %}
+                                        🔽
+                                    {% elif item|int < classic_country[3]|int %}
+                                        🔼
+                                    {% endif %}
+                                {% elif loop.index0 == 4 and item != '-' %}
+                                    {% if item|int > classic_country[4]|int %}
+                                        🔽
+                                    {% elif item|int < classic_country[4]|int %}
+                                        🔼
+                                    {% endif %}
+                                {% elif loop.index0 == 5 and item != '-' %}
+                                    {% if item > classic_country[5] %}
+                                        🔽
+                                    {% elif item < classic_country[5] %}
+                                        🔼
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+
+    
+</div>
+
+<script> 
+    $( function() { 
+    var availableTags = [ 
+        {% for n in names %}
+            {% if session["classic_tcount"]%}
+                {% if n not in session["classic_tcount"]%}
+                    "{{ n }}",
+                {% endif %}
+            {% else %} "{{ n }}",
+            {% endif %} 
+        {% endfor %} 
+    ]; 
+    $( "#tags" ).autocomplete({ 
+        source: availableTags 
+    }); 
+    } ); 
+    </script> 
+
+<footer>
+    <div class="footer-content">
+        <div class="copyright">
+            <p>all rights reserved &copy; 2024 <b><a href="https://github.com/0adri3n/geodle"  target="_blank" class="link" style="color: white;">geodle</a></b> | made with ❤ by 0adri3n | affiliated to <b><a href="https://wikidle.onrender.com/" target="_blank" class="link" style="color: white;">wikidle!</a></b></p>
+        </div>
+    </div>
+</footer>
+
+</body>
+ 
+</html>

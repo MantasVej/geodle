@@ -1,0 +1,232 @@
+body {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Pour s'assurer que le footer reste en bas */
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+
+}
+
+
+.main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    width: 1px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 
+        /* Déplacements horizontaux */
+        -42vw -4vh 0px 0px #fff,
+        25vw -41vh 0px 0px #fff,
+        -20vw 49vh 0px 1px #fff,
+        5vw 40vh 1px 1px #fff,
+        -29vw 19vh 1px 0px #fff,
+        -44vw -13vh 0px 0px #fff,
+        46vw 41vh 0px 1px #fff,
+        -3vw -45vh 0px 1px #fff,
+        /* Zoom */
+        47vw 35vh 1px 0px #fff,
+        -12vw -45vh 0px 1px #fff,
+        /* Déplacements verticaux supplémentaires */
+        32vw -41vh 1px 1px #fff,
+        0vw 37vh 1px 1px #fff,
+        -34vw 48vh 1px 1px #fff,
+        32vw 26vh 1px 1px #fff,
+        -44vw -33vh 0px 1px #fff,
+        36vw -11vh 0px 1px #fff,
+        -23vw -24vh 1px 0px #fff,
+        -38vw -27vh 0px 1px #fff,
+        28vw 33vh 1px 0px #fff,
+        -49vw -4vh 0px 0px #fff,
+        -16vw -49vh 1px 0px #fff,
+        -12vw 45vh 0px 1px #fff,
+        -36vw -11vh 0px 1px #fff,
+        16vw -19vh 0px 0px #fff,
+        -46vw -12vh 1px 1px #fff,
+        16vw 32vh 0px 1px #fff,
+        -31vw 50vh 1px 0px #fff,
+        36vw -38vh 0px 1px #fff,
+        15vw -32vh 0px 0px #fff,
+        -44vw -2vh 1px 0px #fff,
+        -15vw -34vh 0px 0px #fff,
+        -20vw -20vh 1px 1px #fff,
+        42vw 50vh 0px 1px #fff,
+        -32vw 10vh 1px 0px #fff,
+        -23vw -17vh 0px 0px #fff,
+        44vw 15vh 1px 0px #fff,
+        -48vw -15vh 1px 1px #fff,
+        -24vw 17vh 0px 0px #fff,
+        36vw 16vh 0px 1px #fff,
+        40vw 24vh 0px 0px #fff,
+        18vw 11vh 0px 0px #fff,
+        -15vw -23vh 1px 0px #fff,
+        -43vw 13vh 1px 0px #fff,
+        -36vw -18vh 0px 0px #fff,
+        34vw 15vh 1px 1px #fff,
+        16vw 49vh 0px 0px #fff,
+        6vw 39vh 0px 0px #fff,
+        3vw -35vh 0px 1px #fff,
+        -39vw -1vh 1px 0px #fff,
+        5vw 0vh 1px 0px #fff,
+        48vw 9vh 1px 1px #fff,
+        29vw -12vh 1px 1px #fff,
+        -48vw 13vh 1px 0px #fff,
+        -42vw 32vh 1px 1px #fff,
+        28vw 2vh 0px 0px #fff,
+        /* Plus d'étoiles */
+        10vw -10vh 1px 0px #fff,
+        -15vw 25vh 1px 1px #fff,
+        30vw 35vh 1px 0px #fff,
+        -20vw -5vh 1px 1px #fff,
+        5vw 20vh 0px 1px #fff,
+        -30vw 40vh 0px 0px #fff,
+        20vw -35vh 1px 0px #fff,
+        -10vw -40vh 0px 1px #fff,
+        -5vw 10vh 1px 1px #fff,
+        40vw 15vh 1px 0px #fff,
+        -35vw -30vh 0px 1px #fff,
+        -20vw 30vh 1px 0px #fff,
+        0vw -15vh 0px 0px #fff,
+        45vw -20vh 1px 1px #fff,
+        -25vw 5vh 1px 0px #fff,
+        15vw -30vh 0px 1px #fff,
+        -35vw -25vh 1px 1px #fff,
+        25vw 45vh 0px 0px #fff,
+        -5vw -20vh 1px 0px #fff,
+        -40vw 10vh 1px 1px #fff,
+        20vw -5vh 1px 0px #fff,
+        -30vw -10vh 0px 1px #fff,
+        35vw 35vh 0px 0px #fff,
+        0vw -25vh 1px 1px #fff,
+        -45vw 0vh 0px 1px #fff,
+        10vw 30vh 1px 0px #fff,
+        -25vw -35vh 1px 1px #fff,
+        30vw -40vh 1px 0px #fff,
+        5vw 5vh 1px 1px #fff,
+        -15vw -5vh 0px 1px #fff,
+        40vw 20vh 0px 0px #fff,
+        -35vw 10vh 1px 0px #fff,
+        20vw -15vh 1px 1px #fff,
+        -10vw -20vh 0px 1px #fff,
+        -5vw 40vh 1px 0px #fff,
+        45vw 30vh 1px 1px #fff,
+        -30vw -35vh 0px 1px #fff,
+        15vw 15vh 0px 0px #fff,
+        -25vw 25vh 1px 1px #fff,
+        30vw -30vh 1px 0px #fff,
+        5vw 20vh 1px 1px #fff,
+        -20vw -5vh 0px 1px #fff,
+        40vw -20vh 0px 0px #fff,
+        -5vw 10vh 1px 0px #fff,
+        30vw -25vh 1px 1px #fff,
+        -15vw 5vh 0px 0px #fff,
+        25vw -10vh 1px 1px #fff,
+        10vw 30vh 0px 0px #fff,
+        -20vw -15vh 1px 1px #fff,
+        35vw 25vh 1px 0px #fff,
+        -10vw 0vh 0px 1px #fff,
+        20vw -30vh 1px 0px #fff,
+        0vw 15vh 0px 1px #fff,
+        -30vw 20vh 0px 0px #fff,
+        15vw -35vh 0px 1px #fff;
+    animation: zoomRotate 20s alternate infinite;
+}
+
+
+@keyframes zoomRotate {
+    0% {
+        transform: scale(0.85) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.25) rotate(90deg);
+    }
+}
+
+/* Ajoutez ces styles pour le header */
+header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 36px;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre légère */
+}
+
+.site-title span {
+    font-weight: bold;
+}
+
+.geo {
+    color: #005ca8; /* Bleu */
+}
+
+.dle {
+    color: #00f335; /* Bleu-vert */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 30vh;
+}
+
+.mode-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.mode-button img {
+    width: 75px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+}
+
+.link{
+    text-decoration: none;
+}
+
+
+/* Ajoutez ces styles pour le footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Pour que le footer reste en bas */
+}
+
+
+#welcome{
+
+    color: white;
+
+}
+
+
+
+/* Ajoutez ces styles pour le footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Pour que le footer reste en bas */
+}
+
+
